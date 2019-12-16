@@ -26,16 +26,6 @@ def day10():
       c = (y2 - (m * x2))
       return str(round(m, 2))+"|" + str(round(c,2));
 
-  def lineFromPoints(x1, y1, x2, y2): 
-    a = y2 - y1 
-    b = x1 - x2  
-    c = a*(x1) + b*(y1)  
-    if(b<0):  
-        equation = str(a)+ "x" + str(b) + "y=" + str(c);
-    else: 
-        equation = str(a) + "x+" + str(b) + "y=" + str(c);
-    return equation;
-
   input10File   = open("inputDay10","r")
   inputs = input10File.readlines()
 
@@ -63,10 +53,18 @@ def day10():
     index+=1
     
   bestAsteroidCount = 0
+  controlStation = None
   for asteroid in asteroidMap.values():
     if len(asteroid.connections) > bestAsteroidCount:
       bestAsteroidCount = len(asteroid.connections);
+      controlStation = asteroid;
   print(f"BEST ASTEROID COUNT: {bestAsteroidCount}")
+
+  print(f"Control Station --- [{controlStation.name}]----")
+  for line in list(controlStation.connections):
+    print(f"line->[{line}]");
+    print(f"{print(' '.join(controlStation.connections[line]))}")
+
   input10File.close()
 
   
