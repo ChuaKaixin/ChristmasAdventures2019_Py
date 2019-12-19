@@ -83,7 +83,7 @@ def day14_1() :
     for r in rawResourceDict.keys():
       print(f"raw resource {r} required {rawResourceDict[r]} units")
       ore+=(resourceDict[r].sources["ORE"]*(math.ceil(rawResourceDict[r]/resourceDict[r].units)))
-    print('{} FUEL requires {} ORE'.format(attempt, ore))
+    print(f"{attempt} FUEL requires {ore} ORE")
     if ore > oreRemaining:
       break
     minAttempt = attempt
@@ -91,7 +91,7 @@ def day14_1() :
     maxAttempt = attempt
   print('step 2')
   while maxAttempt - minAttempt > 1:
-    print('answer is between {} and {}'.format(minAttempt, maxAttempt))
+    print(f"fuel is between {minAttempt} and {maxAttempt}")
     ore = 0;
     rawResourceDict = {}
     newAttempt = (maxAttempt+minAttempt)//2
@@ -99,7 +99,7 @@ def day14_1() :
     for r in rawResourceDict.keys():
       print(f"raw resource {r} required {rawResourceDict[r]} units")
       ore+=(resourceDict[r].sources["ORE"]*(math.ceil(rawResourceDict[r]/resourceDict[r].units)))
-    print('{} FUEL requires {} ORE'.format(newAttempt, ore))
+    print(f"{newAttempt} FUEL requires {ore} ORE")
     if ore > oreRemaining:
       maxAttempt = newAttempt
     else:
